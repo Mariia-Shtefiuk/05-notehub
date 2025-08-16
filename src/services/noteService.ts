@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { Note, NoteTag } from "../types/Note2";
+import type { Note, NoteTag } from "../types/note";
 
 const token = import.meta.env.VITE_NOTEHUB_TOKEN;
 
