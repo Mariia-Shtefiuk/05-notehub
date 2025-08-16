@@ -24,33 +24,23 @@ export interface CreateNotePayload {
 }
 
 export interface FetchNotesResponse {
-  results: Note[];
-  page: number;
-  perPage: number;
+  notes: Note[];
   totalPages: number;
-  totalItems: number;
 }
 
 export async function fetchNotes(
   params: FetchNotesParams
 ): Promise<FetchNotesResponse> {
-  const { data } = await api.get("/notes", { params });
-  console.log("Відповідь з бекенду:", data);
-  return {
-    results: data.notes,
-    page: params.page || 1,
-    perPage: params.perPage || data.notes.length,
-    totalPages: data.totalPages,
-    totalItems: data.totalItems || data.notes.length,
-  };
+  const { data } = await api.get<FetchNotesResponse>("/notes", { params });
+  return data;
 }
 
 export async function createNote(payload: CreateNotePayload): Promise<Note> {
-  const { data } = await api.post("/notes", payload);
+  const { data } = await api.post<Note>("/notes", payload);
   return data;
 }
 
 export async function deleteNote(id: string): Promise<Note> {
-  const { data } = await api.delete(`/notes/${id}`);
+  const { data } = await api.delete<Note>(`/notes/${id}`);
   return data;
 }

@@ -60,8 +60,8 @@ export default function App() {
       <main>
         {isLoading && <Loader message="Loading notes..." />}
         {isError && <ErrorMessage message={(error as Error).message} />}
-        {data?.results?.length ? (
-          <NoteList notes={data.results} />
+        {data?.notes?.length ? (
+          <NoteList notes={data.notes} />
         ) : (
           <p>No notes found.</p>
         )}

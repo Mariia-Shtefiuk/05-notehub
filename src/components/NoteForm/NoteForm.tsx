@@ -5,6 +5,7 @@ import type { NoteTag } from "../../types/note";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createNote } from "../../services/noteService";
 import type { CreateNotePayload } from "../../services/noteService";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 interface NoteFormProps {
   onClose: () => void;
@@ -71,7 +72,7 @@ export default function NoteForm({ onClose }: NoteFormProps) {
               onBlur={handleBlur}
             />
             {touched.title && errors.title && (
-              <span className={css.error}>{errors.title}</span>
+              <ErrorMessage message={errors.title} />
             )}
           </div>
 
@@ -87,7 +88,7 @@ export default function NoteForm({ onClose }: NoteFormProps) {
               onBlur={handleBlur}
             />
             {touched.content && errors.content && (
-              <span className={css.error}>{errors.content}</span>
+              <ErrorMessage message={errors.content} />
             )}
           </div>
 
@@ -107,9 +108,7 @@ export default function NoteForm({ onClose }: NoteFormProps) {
               <option value="Meeting">Meeting</option>
               <option value="Shopping">Shopping</option>
             </select>
-            {touched.tag && errors.tag && (
-              <span className={css.error}>{errors.tag}</span>
-            )}
+            {touched.tag && errors.tag && <ErrorMessage message={errors.tag} />}
           </div>
 
           <div className={css.actions}>
