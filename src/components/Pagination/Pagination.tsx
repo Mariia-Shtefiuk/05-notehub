@@ -22,8 +22,6 @@ export default function Pagination({
         onPageChange={(selectedItem) => onPageChange(selectedItem.selected + 1)}
         marginPagesDisplayed={1}
         pageRangeDisplayed={3}
-        containerClassName="pagination"
-        activeClassName="active"
         previousLabel="←"
         nextLabel="→"
         breakLabel="…"
