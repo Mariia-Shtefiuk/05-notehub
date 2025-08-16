@@ -5,7 +5,7 @@ interface ErrorMessageProps {
 }
 
 export default function ErrorMessage({
-  message = "There was an error, please try again.",
+  message = "There was an error, please try again..",
 }: ErrorMessageProps) {
   return (
     <>
